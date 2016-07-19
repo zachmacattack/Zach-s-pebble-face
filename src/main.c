@@ -14,10 +14,16 @@ static void update_time() {
 
   // Create a long-lived buffer
   static char buffer[] = "00:00";
-
+  static char minbuffer[] = "00";
   // format the way that the time text is going to be displayed
-strftime(buffer, sizeof("00:00"),"%H*%M", tick_time);
-
+	strftime(minbuffer, sizeof(minbuffer), "%M", tick_time);
+	
+	if(tick_time->tm_hour > 12) {
+		snprintf(buffer, sizeof(buffer), "%d:%s", (tick_time->tm_hour)-12, minbuffer);
+	} else {
+		snprintf(buffer, sizeof(buffer), "%d:%s", tick_time->tm_hour, minbuffer);
+	}
+	
 
   // Display this time on the TextLayer
   text_layer_set_text(s_time_layer, buffer);
@@ -35,13 +41,13 @@ static void main_window_load(Window *window) {
   s_time_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_ATE_BIT_24));
 
   //time layer
-  s_time_layer = text_layer_create(GRect(15, 141, 120, 40));
-  text_layer_set_background_color(s_time_layer, GColorClear);
-  text_layer_set_text_color(s_time_layer, GColorBlack);
+  s_time_layer = text_layer_create(GRect(12, 71, 120, 40));
+  text_layer_set_background_color(s_time_layer, GColorBlack);
+  text_layer_set_text_color(s_time_layer, GColorRed);
   text_layer_set_text(s_time_layer, "00:00");
 
   // Improve the layout to be more like a watchface
-  text_layer_set_font(s_time_layer, s_time_font);
+  text_layer_set_font(s_time_layer, fonts_get_system_font(FONT_KEY_BITHAM_30_BLACK));
   text_layer_set_text_alignment(s_time_layer, GTextAlignmentCenter);
 
   // Add it as a child layer to the Window's root layer
