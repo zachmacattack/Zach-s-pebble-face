@@ -17,6 +17,30 @@
         "resources": {
             "media": [
                 {
+                    "file": "images/3.png",
+                    "name": "THREE_PICTURE",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/2.png",
+                    "name": "TWO_PICTURE",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/1.png",
+                    "name": "ONE_PICTURE",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/zpicture.png",
+                    "name": "WATCH_BACKROUND",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
                     "file": "images/asl_resized_mono.png",
                     "name": "SPARK_ICON",
                     "type": "png"
@@ -40,7 +64,7 @@
         ],
         "uuid": "66a1e271-1c08-463c-ae5a-df468c62af9b",
         "watchapp": {
-            "watchface": true
+            "watchface": false
         }
     },
     "version": "1.0.0"
